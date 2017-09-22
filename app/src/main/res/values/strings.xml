@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">Onusondhan</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hometext1">Sign In/Sign UP needed to \n1.Post a Missing Person\'s Identity\n2.Post a Found Person\'s Identity</string>
+    <string name="welcome">Welcome To Onusondhan</string>
+    <string name="alertemail">Please Enter Valid Email</string>
+    <string name="alertpass">Please Enter Password</string>
+    <string name="alertpassbig">Password must be more than 6 Characters</string>
+    <string name="alertinvalid">Invalid Email or Password</string>
+    <string-array name="age">
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+    </string-array>
+    <string-array name="feet">
+        <item>Feet</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string-array name="inch">
+        <item>Inch</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </string-array>
+    <array name="gender">
+        <item name="Male">Male</item>
+        <item name="Female">Female</item>
+    </array>
+</resources>

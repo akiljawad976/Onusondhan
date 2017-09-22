@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "354089672334",
+    "firebase_url": "https://onusondhandraft.firebaseio.com",
+    "project_id": "onusondhandraft",
+    "storage_bucket": "onusondhandraft.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354089672334:android:d1017c024bb2682d",
+        "android_client_info": {
+          "package_name": "com.example.akil.onusondhan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354089672334-rkk7km2skp8aqnif6u27p7krfrpkgs8j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.akil.onusondhan",
+            "certificate_hash": "325674e5aedcef029e8a38f024bd0b67df57ac24"
+          }
+        },
+        {
+          "client_id": "354089672334-vus742hid5ta0u45m26acdtn1oqctgh9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAutOHxV3jKVR2rbLYAC94qp3SXAbYdKXE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354089672334-vus742hid5ta0u45m26acdtn1oqctgh9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
