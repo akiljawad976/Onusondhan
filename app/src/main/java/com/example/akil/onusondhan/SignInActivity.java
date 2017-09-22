@@ -43,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
 
         if(firebaseAuth.getCurrentUser() !=null){
             finish();
-            Toast.makeText(getApplicationContext(),"User Already Logged In",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"User Logged In",Toast.LENGTH_LONG).show();
         }
 
         editTextEmail = (EditText) findViewById(R.id.etName);
