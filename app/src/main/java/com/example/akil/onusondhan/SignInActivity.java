@@ -72,6 +72,7 @@ public class SignInActivity extends AppCompatActivity {
     private void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String passw = editTextPassword.getText().toString().trim();
+        
 
         if (!AppConstant.isValidEmail(email)){
             AppConstant.showAlertMessage(context,getString(R.string.alertemail));
