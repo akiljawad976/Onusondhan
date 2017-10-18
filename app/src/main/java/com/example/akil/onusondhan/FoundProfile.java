@@ -1,15 +1,19 @@
 package com.example.akil.onusondhan;
 
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.content.MimeTypeFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,6 +29,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class FoundProfile extends AppCompatActivity implements View.OnClickListener{
@@ -37,10 +42,14 @@ public class FoundProfile extends AppCompatActivity implements View.OnClickListe
     private EditText height;
     private Spinner age;
     private Button confirm;
+    private String imageLink;
+    public String path;
     DatabaseReference databaseFound;
     StorageReference storageFound;
     private Uri filePath;
     private static final int PICK_IMAGE_REQUEST = 234;
+    public static final String FB_STORAGE_PATH= "image/";
+    public static final String FB_DATABASE_PATH= "image";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +79,6 @@ public class FoundProfile extends AppCompatActivity implements View.OnClickListe
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"Select Image"),PICK_IMAGE_REQUEST);
     }
-    private void upLoadFile(){
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -80,12 +86,20 @@ public class FoundProfile extends AppCompatActivity implements View.OnClickListe
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data !=null && data.getData() != null){
             filePath = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filePath);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 image.setImageBitmap(bitmap);
+            }catch(FileNotFoundException e){
+                    e.printStackTrace();
             } catch (IOException e) {
 
             }
         }
+    }
+    private String getImageExt(Uri uri){
+
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
     @Override
@@ -95,17 +109,19 @@ public class FoundProfile extends AppCompatActivity implements View.OnClickListe
                 final ProgressDialog progressDialog = new ProgressDialog(this);
                 progressDialog.setTitle("Uploading...");
                 progressDialog.show();
+                path = FB_STORAGE_PATH + System.currentTimeMillis() + "." +getImageExt(filePath);
 
-
-                StorageReference riversRef = storageFound.child("images/rivers.jpg");
+                StorageReference riversRef = storageFound.child(path);
 
                 riversRef.putFile(filePath)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 progressDialog.dismiss();
+                                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                                imageLink = downloadUrl.toString();
                                 Toast.makeText(getApplicationContext(), "Image Uploaded", Toast.LENGTH_SHORT).show();
-
+                                registerFound();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -124,9 +140,10 @@ public class FoundProfile extends AppCompatActivity implements View.OnClickListe
                         }
                 });
             }else{
+                Toast.makeText(getApplicationContext(), "Please Select Image", Toast.LENGTH_SHORT).show();
 
             }
-            registerFound();
+
 
         }
         if(view == image){
@@ -142,11 +159,13 @@ public class FoundProfile extends AppCompatActivity implements View.OnClickListe
         String desc = description.getText().toString();
         String hght = height.getText().toString();
         int ag = Integer.parseInt(age.getSelectedItem().toString());
+        String imgPath = imageLink;
 
-        Found found = new Found(foundName,wght,mark,desc,hght,ag);
+        Found found = new Found(foundName,wght,mark,desc,hght,ag,imgPath);
 
         databaseFound.child(foundName).setValue(found);
         Toast.makeText(getApplicationContext(), "Post Added", Toast.LENGTH_SHORT).show();
+        finish();
 
     }
 }
