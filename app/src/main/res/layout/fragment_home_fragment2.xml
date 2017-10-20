@@ -28,15 +28,6 @@
             android:textSize="60dp"
             android:gravity="center"
             android:id="@+id/welctext"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="Log Out"
-            android:id="@+id/logout"
-            android:layout_margin="10dp"
-            android:background="@color/colorAccent"/>
 
 
     </RelativeLayout>

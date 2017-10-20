@@ -1,11 +1,10 @@
 package com.example.akil.onusondhan;
 
 /**
- * Created by Akil on 9/7/2017.
+ * Created by Valociraptor on 10/19/2017.
  */
-
-class Found {
-    public String foundName;
+class Missing {
+    public String missingName;
     public String wght;
     public String mark;
     public String desc;
@@ -17,7 +16,20 @@ class Found {
     public String skcolor;
     public int age;
 
-    public Found() {
+    public Missing() {
+    }
+    public Missing(String missingName, String wght, String mark, String desc, String hght, int age,String path,String skcolor,String fnddat,String fndplac,String numbr) {
+        this.missingName = missingName;
+        this.wght = wght;
+        this.mark = mark;
+        this.desc = desc;
+        this.hght = hght;
+        this.path = path;
+        this.age = age;
+        this.fnddat=fnddat;
+        this.fndplac=fndplac;
+        this.skcolor=skcolor;
+        this.numbr=numbr;
     }
 
     public String getNumbr() {
@@ -36,13 +48,10 @@ class Found {
         return skcolor;
     }
 
-    public String getPath() {
-        return path;
+    public String getMissingName() {
+        return missingName;
     }
 
-    public String getFoundName() {
-        return foundName;
-    }
 
     public String getWght() {
         return wght;
@@ -60,22 +69,13 @@ class Found {
         return hght;
     }
 
+    public String getPath() {
+        return path;
+    }
+
     public int getAge() {
         return age;
     }
 
-    public Found(String foundName, String wght, String mark, String desc, String hght, int age,String path,String skcolor,String fnddat,String fndplac,String numbr) {
-        this.foundName = foundName;
-        this.wght = wght;
-        this.mark = mark;
-        this.desc = desc;
-        this.hght = hght;
-        this.age = age;
-        this.path=path;
-        this.fnddat=fnddat;
-        this.fndplac=fndplac;
-        this.skcolor=skcolor;
-        this.numbr=numbr;
-    }
 
 }

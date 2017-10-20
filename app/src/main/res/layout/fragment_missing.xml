@@ -21,8 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/post1"
-        android:layout_below="@+id/lv2"
         android:text="Post"
+        android:layout_alignBottom="@+id/lv1"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/buttonshape"/>
 
 </RelativeLayout>

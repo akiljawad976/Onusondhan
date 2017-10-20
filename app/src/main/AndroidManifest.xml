@@ -30,7 +30,9 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".FoundProfile" />
-        <activity android:name=".MissingProfile"></activity>
+        <activity android:name=".MissingProfile" />
+        <activity android:name=".FoundPerson" />
+        <activity android:name=".MissingPerson"></activity>
     </application>
 
 </manifest>

@@ -40,6 +40,10 @@ public class FoundProfile extends AppCompatActivity implements View.OnClickListe
     private EditText identifyingMark;
     private EditText description;
     private EditText height;
+    private EditText skinColor;
+    private EditText foundDate;
+    private EditText foundPlace;
+    private EditText contactNumber;
     private Spinner age;
     private Button confirm;
     private String imageLink;
@@ -64,10 +68,14 @@ public class FoundProfile extends AppCompatActivity implements View.OnClickListe
         confirm = (Button) findViewById(R.id.confirmbtn);
         height = (EditText)findViewById(R.id.editheight);
         age = (Spinner)findViewById(R.id.age);
+        skinColor = (EditText)findViewById(R.id.editSkinColo);
+        foundDate = (EditText)findViewById(R.id.editFoundDat);
+        foundPlace = (EditText)findViewById(R.id.editFoundPlac);
+        contactNumber = (EditText)findViewById(R.id.contactNumb);
         int TYPE = Integer.parseInt(age.getSelectedItem().toString());
 
         databaseFound = FirebaseDatabase.getInstance().getReference("Found");
-        storageFound = FirebaseStorage.getInstance().getReference();
+        storageFound = FirebaseStorage.getInstance().getReference("FoundImg");
         confirm.setOnClickListener(this);
         image.setOnClickListener(this);
 
@@ -158,10 +166,14 @@ public class FoundProfile extends AppCompatActivity implements View.OnClickListe
         String mark = identifyingMark.getText().toString().trim();
         String desc = description.getText().toString();
         String hght = height.getText().toString();
+        String skcol = skinColor.getText().toString();
+        String fnddat = foundDate.getText().toString();
+        String fndplc = foundPlace.getText().toString();
+        String numb = contactNumber.getText().toString();
         int ag = Integer.parseInt(age.getSelectedItem().toString());
         String imgPath = imageLink;
 
-        Found found = new Found(foundName,wght,mark,desc,hght,ag,imgPath);
+        Found found = new Found(foundName,wght,mark,desc,hght,ag,imgPath,skcol,fnddat,fndplc,numb);
 
         databaseFound.child(foundName).setValue(found);
         Toast.makeText(getApplicationContext(), "Post Added", Toast.LENGTH_SHORT).show();

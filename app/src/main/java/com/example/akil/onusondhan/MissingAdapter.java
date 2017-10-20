@@ -23,33 +23,33 @@ import java.util.List;
  * Created by Valociraptor on 9/25/2017.
  */
 
-public class FoundAdapter extends ArrayAdapter<Found> {
+public class MissingAdapter extends ArrayAdapter<Missing> {
     private Activity context;
-    private List<Found> listimage;
+    private List<Missing> listima;
 
-    public FoundAdapter(@NonNull Activity context, List<Found> objects) {
-        super(context, R.layout.item_found_list, objects);
+    public MissingAdapter(@NonNull Activity context, List<Missing> objects) {
+        super(context, R.layout.item_missing_list, objects);
         this.context = context;
-        listimage = objects;
+        listima = objects;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater layoutInFlater = context.getLayoutInflater();
-        View v = layoutInFlater.inflate(R.layout.item_found_list,null,true);
-        TextView tvName = (TextView) v.findViewById(R.id.imageName);
-        ImageView img = (ImageView) v.findViewById(R.id.imageView);
+        LayoutInflater layoutInFlaterr = context.getLayoutInflater();
+        View vi = layoutInFlaterr.inflate(R.layout.item_missing_list,null,true);
+        TextView tvNam = (TextView) vi.findViewById(R.id.imageNam);
+        ImageView im = (ImageView) vi.findViewById(R.id.imageVie);
 
-        Found found = listimage.get(position);
-        Uri temp = Uri.parse(found.getPath());
-        String url = found.getPath();
+        Missing missing = listima.get(position);
+        Uri temp = Uri.parse(missing.getPath());
+        String url = missing.getPath();
 
-        tvName.setText(found.getFoundName());
+        tvNam.setText(missing.getMissingName());
         //Glide.with(context).load(listimage.get(position).getPath()).into(img);
-        Glide.with(getContext()).load(url).into(img);
+        Glide.with(getContext()).load(url).into(im);
 
 
-        return v;
+        return vi;
     }
 }

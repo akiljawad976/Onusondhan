@@ -30,16 +30,6 @@ public class HomeFragment2 extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_fragment2, container, false);
         firebaseAuth = FirebaseAuth.getInstance();
-        logout = (Button) view.findViewById(R.id.logout);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (view == logout){
-                    firebaseAuth.signOut();
-                    startActivity(new Intent(getActivity(), MainActivity.class));
-                }
-            }
-        });
 
         return view;
     }
