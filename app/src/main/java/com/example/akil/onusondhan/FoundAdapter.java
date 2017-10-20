@@ -2,6 +2,7 @@ package com.example.akil.onusondhan;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -44,6 +45,34 @@ public class FoundAdapter extends ArrayAdapter<Found> {
         Found found = listimage.get(position);
         Uri temp = Uri.parse(found.getPath());
         String url = found.getPath();
+        final String foundName=found.getFoundName();
+        final String foundHeight=found.getHght();
+        final String foundWeight=found.getWght();
+        final int foundAge=found.getAge();
+        final String foundDate=found.getFnddat();
+        final String foundPlace=found.getFndplac();
+        final String foundDesc=found.getDesc();
+        final String foundColor=found.getSkcolor();
+        final String foundNumb=found.getNumbr();
+        final String foundMark=found.getMark();
+
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(),FoundPerson.class);
+                i.putExtra("Name",foundName);
+                i.putExtra("Age",foundAge);
+                i.putExtra("Height",foundHeight);
+                i.putExtra("Weight",foundWeight);
+                i.putExtra("Desc",foundDesc);
+                i.putExtra("Place",foundPlace);
+                i.putExtra("Date",foundDate);
+                i.putExtra("Mark",foundMark);
+                i.putExtra("Skin",foundColor);
+                i.putExtra("Numb",foundNumb);
+                getContext().startActivity(i);
+            }
+        });
 
         tvName.setText(found.getFoundName());
         //Glide.with(context).load(listimage.get(position).getPath()).into(img);

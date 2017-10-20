@@ -68,13 +68,13 @@ public class FoundFragment extends Fragment {
         progressDialog.setMessage("Please Wait...");
         progressDialog.show();
         databaseReference = FirebaseDatabase.getInstance().getReference("Found");
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), FoundPerson.class);
-                startActivity(intent);
-            }
-        });
+//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent = new Intent(getActivity(), FoundPerson.class);
+//                startActivity(intent);
+//            }
+//        });
         return view;
     }
 
