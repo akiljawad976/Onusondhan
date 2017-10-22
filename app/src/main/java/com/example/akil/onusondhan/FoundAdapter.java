@@ -55,6 +55,7 @@ public class FoundAdapter extends ArrayAdapter<Found> {
         final String foundColor=found.getSkcolor();
         final String foundNumb=found.getNumbr();
         final String foundMark=found.getMark();
+        //asdafads
 
         v.setOnClickListener(new View.OnClickListener() {
             @Override
